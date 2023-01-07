@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-4">
+            <h3 class="display-6 text-center my-5 fw-semibold">Task detail</h3>
+            <ul class="list-group list-group-flush py-1 ">
+                <li class="list-group-item text success">
+                    <h5>Tittle: {{task.titulo}}</h5>
+                    <p>Description: {{task.descripcion}}</p>
+                    <p>Is important: {{task.important}}</p>
+                    <p>Is completed: {{task.datecompleted}}</p>
+                    <p>User by: {{task.user.username}}</p>
+                </li>
+                <a class="btn btn-primary py-1" href="{% url 'Task_detail_update' task.id %}">Update</a>
+
+
+                <form class="card card-body p-0" action="{% url 'Task_delete' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger mt-3">
+                        Delete
+                    </button>
+                </form>
+            </ul>
+        </div>
+    </div>
+</main>
+
+
+
+<!--
+    
+-->
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+<!--
+    <a href="{% url 'Task_detail_update' task.id %}">
+    <input type="button" value="Update">
+</a>
+-->
+
+<!--
+<a href="{% url 'Task_detail_update' task.id %}">Actualizar</a>
+-->
+
+<!--
+    <form action="{% url 'Task_delete' task.id %}" method="POST">
+    {% csrf_token %}
+        <button class="btn btn-danger mt-3">
+            Delete
+        </button>
+</form>
+-->

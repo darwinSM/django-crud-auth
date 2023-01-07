@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container"">
+    <div class="row">
+        <div class="col-md-5 offset-md-3 mt-5">
+            <form class="card card-body" action="/signup/" method="POST">
+                <h2 class="display-5 text-center fw-semibold">Signup</h2>
+                {{alert}}
+                {% csrf_token %}
+            
+                <div class="mb-3">
+                    <label for="username">Username:</label>
+                    <input class="form-control" type="text" name="username" id="username" placeholder="write your username">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password1">Password:</label>
+                    <input class="form-control" type="password" name="password1" id="password1" placeholder="write your password">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password2">Confirm you password:</label>
+                    <input class="form-control" type="password" name="password2" id="password2" placeholder="Confirm your password">
+                </div>
+                
+                
+                <button class="btn btn-primary">
+                    Signup
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
+
+
+<!--Formulario de django-->
+<!--{{form.as_table}}-->

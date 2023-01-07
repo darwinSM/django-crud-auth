@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-4">
+            <h3 class="display-6 text-center my-5 fw-semibold">Update</h3>
+
+            {{alert}}
+
+            <h3>{{task.titulo}}</h3>
+
+            <form action="" method="POST" class="card card-body">
+                {% csrf_token %}
+                    {{form}}
+                <button class="btn btn-primary mt-2">
+                    Save
+                </button>
+            </form>
+
+            <form action="{% url 'Task_complete' task.id %}" method="POST" class="card card-body ">
+                {% csrf_token %}
+                {% if task.datecompleted  %}
+                    <button class="btn btn-warning">
+                        Mark as Incomplete & Save
+                    </button>
+        
+                    {% else %}
+                    <button class="btn btn-warning">
+                        Mark as Completed & Save
+                    </button>
+        
+                {% endif %}
+            </form>
+
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
